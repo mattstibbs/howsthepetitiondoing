@@ -8,7 +8,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
 </head>
 <body>
+	<div style="width:50%;">
 	<canvas id="myChart" width="100" height="100"></canvas>
+	</div>
+	
 	<script>
 	var url = 'https://petition.parliament.uk/petitions/131215.json';
 
@@ -31,10 +34,13 @@
 	function makeChart(petitionSignatures){
 
 		var ctx = document.getElementById("myChart");
+		var refTitle = "Want a 2nd referendum" + " (" + petitionSignatures + ")";
 		var myChart = new Chart(ctx, {
 	    type: 'bar',
+	    responsive: true,
+		maintainAspectRatio: true,
 	    data: {
-	        labels: ["Want a 2nd referendum", "Remain Voters", "Leave Voters"],
+	        labels: [refTitle, "Remain Voters (16141241)", "Leave Voters (17410742)"],
 	        datasets: [{
 	            label: '# of People',
 	            data: [petitionSignatures, 16141241, 17410742],
@@ -67,7 +73,7 @@
 
 
 
-	    <div class="footer">
+	<div class="footer">
       <hr>
       <!-- <a href="https://github.com/rooreynolds/hasarticle50beeninvoked">Updates accepted here</a>. -->
     </div>
