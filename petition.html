@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 	<meta charset="UTF-8">
+ 	<title>How many want a 2nd referendum?</title>
+	<script src='https://code.jquery.com/jquery-3.0.0.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
+</head>
+<body>
+	<canvas id="myChart" width="100" height="100"></canvas>
+	<script>
+	var url = 'https://petition.parliament.uk/petitions/131215.json';
+
+	var responseData;
+
+	$.ajax({
+  		dataType: "json",
+  		url: url,
+  		data: responseData,
+  		success: success
+	});
+	
+	function success(responseData){
+  		console.log(responseData);
+  		console.log(responseData.data.attributes.signature_count);
+  		var petitionSignatures = responseData.data.attributes.signature_count;
+  		makeChart(petitionSignatures);
+	}
+
+	function makeChart(petitionSignatures){
+
+		var ctx = document.getElementById("myChart");
+		var myChart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: ["Want a 2nd referendum", "Remain Voters", "Leave Voters"],
+	        datasets: [{
+	            label: '# of People',
+	            data: [petitionSignatures, 16000000, 17000000],
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255,99,132,1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero:true
+	    				}
+	        		}]
+	    		}
+	    	}
+		});
+	}
+
+	</script>
+
+
+
+	    <div class="footer">
+      <hr>
+      <!-- <a href="https://github.com/rooreynolds/hasarticle50beeninvoked">Updates accepted here</a>. -->
+    </div>
+</body>
+</html>
