@@ -6,6 +6,17 @@
  	<title>How's the petition doing?</title>
 	<script src='https://code.jquery.com/jquery-3.0.0.min.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-79840169-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 </head>
 <body>
 	<div style="width:50%;">
@@ -34,13 +45,13 @@
 	function makeChart(petitionSignatures){
 
 		var ctx = document.getElementById("myChart");
-		var refTitle = "Want a 2nd referendum" + " (" + petitionSignatures + ")";
+		var refTitle = "Have signed the petition" + " (" + petitionSignatures + ")";
 		var myChart = new Chart(ctx, {
 	    type: 'bar',
 	    responsive: true,
 		maintainAspectRatio: true,
 	    data: {
-	        labels: [refTitle, "Remain Voters (16141241)", "Leave Voters (17410742)"],
+	        labels: [refTitle, "Voted Remain (16141241)", "Voted Leave (17410742)"],
 	        datasets: [{
 	            label: '# of People',
 	            data: [petitionSignatures, 16141241, 17410742],
@@ -68,17 +79,6 @@
 	    	}
 		});
 	}
-
-	</script>
-
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-79840169-1', 'auto');
-	  ga('send', 'pageview');
 
 	</script>
 
